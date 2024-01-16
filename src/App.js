@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Login from "./component/Login";
+import MainContainer from "./component/MainContainer";
+import Welcome from "./component/Welcome";
+import ChatArea from "./component/ChatArea";
+import User_Group from "./component/User_Group";
+import CreateGroup from "./component/CreateGroup";
+import Groups from "./component/Groups";
+import Register from "./component/Register";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+          <Route path="app" element={<MainContainer />}>
+            <Route path="welcome" element={<Welcome />} />
+            <Route path="chat" element={<ChatArea />} />
+            <Route path="users" element={<User_Group />} />
+            <Route path="groups" element={<Groups />} />
+
+            <Route path="create-groups" element={<CreateGroup />} />
+            {/* <Route path="chat" element={<ChatArea />} /> */}
+          </Route>
+        </Routes>
+        {/* <Login /> */}
+        {/* <MainContainer /> */}
+      </div>
+    </>
   );
 }
 
